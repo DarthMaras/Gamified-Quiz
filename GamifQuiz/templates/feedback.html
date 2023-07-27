@@ -1,0 +1,21 @@
+<!-- feedback.html -->
+<form method="post" action="{% url 'GamifQuiz:submit_feedback' %}">
+  {% csrf_token %}
+  
+  <h2>Feedback</h2>
+  
+  {% for question in feedback_questions %}
+  <label for="{{ question.name }}">{{ question.question }} Rate from 1-10 (1 being the least)</label>
+  <div class="rating">
+    {% for rating in question.rating_options %}
+      <input type="radio" id="{{ question.name }}_{{ rating }}" name="{{ question.name }}" value="{{ rating }}">
+      <label for="{{ question.name }}_{{ rating }}">{{ rating }}</label>
+    {% endfor %}
+  </div>
+  {% endfor %}
+  
+  <label for="thoughts">Could you please provide any additional thoughts or suggestions for improvement of your experience?:</label>
+  <textarea name="thoughts" rows="4" maxlength="300"></textarea>
+
+  <button type="submit" name="submit-feedback">Give Feedback</button>
+</form>

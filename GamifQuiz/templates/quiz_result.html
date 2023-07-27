@@ -1,0 +1,21 @@
+<h1>Quiz Result</h1>
+<p>Hello, {{ username }}!</p>
+<p>Your final score: {{ score }}</p>
+<p>Progress: {{ progress }}%</p>
+{% if badge %}
+  <p>Congratulations! You earned the {{ badge }}!</p>
+{% endif %}
+{% if reward %}
+  <p>Congratulations! You earned £10 reward!</p>
+{% endif %}
+<p>{{ message }}</p>
+
+<form method="post" action="{% url 'GamifQuiz:play_again' %}">
+  {% csrf_token %}
+  <button type="submit">PLAY AGAIN</button>
+</form>
+
+<form method="post" action="{% url 'GamifQuiz:submit_feedback' %}">
+  {% csrf_token %}
+  <button type="submit" name="submit-feedback">Provide Feedback</button>
+</form>

@@ -1,0 +1,17 @@
+<!-- play_again.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Play Again</title>
+</head>
+<body>
+    <h2>Play Again</h2>
+    <p>Get ready for another round of the quiz!</p>
+    <form method="post" action="{% url 'GamifQuiz:start_quiz' %}">
+        {% csrf_token %}
+        <label for="username">Username:</label>
+        <input type="text" name="username" required>
+        <button type="submit">Start Quiz</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Financial Quiz Game</title>
+</head>
+<body>
+    <h1>Financial Quiz Game</h1>
+    <p>Hello!</p>
+    <p>You have selected the general category for personal finance.</p>
+    <p>This category consists of savings, credit, investing, insurance, income, and purchases as the main topics of the questions.</p>
+    <p>You will have to answer 10 questions. 10 points will be awarded for every correct answer, and there is no point deduction for any wrong answers.</p>
+    <p>Answer correctly to 7/10 questions, and you will receive a badge of completion.</p>
+    <p>Answer correctly to 10/10 questions, and you will receive £10.</p>
+    <p>You can try as many times as you want to receive the rewards, but the rewards can be claimed only once.</p>
+    <form method="post" action="{% url 'GamifQuiz:start_quiz' %}">
+        {% csrf_token %}
+        <label for="username">Enter your name:</label>
+        <input type="text" name="username" required>
+        <button type="submit">Start Quiz</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<h1>Question 2</h1>
+
+<p>{{ question }}</p>
+
+<p>Your Score: {{ score }}</p>
+
+<form method="post" action="{% url 'GamifQuiz:quiz_question' question_number=2 %}">
+  {% csrf_token %}
+  {% for choice in answers %}
+    <input type="radio" name="answer" value="{{ choice }}"> {{ choice }}<br>
+  {% endfor %}
+  
+  <button type="submit">Submit</button>
+</form>
+
+<!-- Display the feedback message -->
+{% if message %}
+  <p>{{ message }}</p>
+{% endif %}
+
+<!-- Display the extra information if available -->
+{% if feedback %}
+  <p>{{ feedback }}</p>
+{% endif %}
+
+<!-- Display a "Next" button to move to the next question -->
+{% if message %}  <!-- Show the "Next" button only when the form has been submitted -->
+  <form method="post" action="{% url 'GamifQuiz:quiz_question' question_number=3 %}">
+    {% csrf_token %}
+    <button type="submit">Next</button>
+  </form>
+{% endif %}
+
+<!-- Progression bar -->
+<div class="progress-bar">
+  <div class="progress-bar-fill" style="width: {{ progress }}%;"></div>
+</div>
+
+<!-- CSS for the progression bar -->
+<style>
+  .progress-bar {
+    width: 100%;
+    height: 20px;
+    background-color: #f2f2f2;
+    margin-top: 20px;
+  }
+
+  .progress-bar-fill {
+    height: 100%;
+    background-color: #4caf50;
+    width: {{ progress }}%;
+    transition: width 0.3s ease-in-out;
+  }
+</style>
