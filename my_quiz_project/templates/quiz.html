@@ -1,0 +1,20 @@
+<!-- my_quiz_project/myquiz/templates/quiz.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Quiz</title>
+</head>
+<body>
+    <h1>This is your unique pseudoname for this quiz: {{ username }}</h1>
+    <!-- Your HTML code for the quiz form -->
+    <form method="post">
+        <!-- Render the quiz questions and options here -->
+        <!-- Example: -->
+        <h2>{{ question }}</h2>
+        <input type="radio" name="answer" value="A"> {{ option_a }}<br>
+        <input type="radio" name="answer" value="B"> {{ option_b }}<br>
+        <!-- Add the other options here -->
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
